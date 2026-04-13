@@ -1,0 +1,17 @@
+// Program 1.3 - Write a Java program to swap two variables with or without third variable.
+import java.util.Scanner;
+class Operations{
+    public static void main (String ar[]){
+        System.out.println("Enter 2 numbers to swap them");
+        Scanner s = new Scanner (System.in);
+        int a,b;
+        a = s.nextInt();
+        b = s.nextInt();
+        System.out.println("Before swapping, a = "+ a + " and b = "+b);
+        a=a+b;
+        b=a-b;
+        a=a-b;
+        System.out.println("After swapping, a = "+ a + " and b = "+b);
+
+    }
+}
