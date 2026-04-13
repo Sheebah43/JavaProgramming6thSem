@@ -1,0 +1,17 @@
+// Program 1.5 - Write a Java program to accept a number and check whether the number is even or not. Prints 1 if the number is even or 0 if odd.
+import java.util.Scanner;
+class Operations{
+    public static void main (String ar[]){
+        System.out.println("Enter a number to check if it is even or not. (Will print 1 if it is even and zero if it is odd.)");
+        Scanner s = new Scanner (System.in);
+        int a;
+        a = s.nextInt();
+        if (a%2==0){
+            System.out.println("Output = 1 ");
+        }
+        else{
+            System.out.println("Output = 0");
+        }
+
+    }
+}
