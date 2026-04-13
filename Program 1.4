@@ -1,0 +1,21 @@
+// Program 1.4 - Write a Java program to compare two numbers.
+import java.util.Scanner;
+class Operations{
+    public static void main (String ar[]){
+        System.out.println("Enter 2 numbers to compare them");
+        Scanner s = new Scanner (System.in);
+        int a,b;
+        a = s.nextInt();
+        b = s.nextInt();
+        if (a>b){
+            System.out.println(a+" is greater than "+b);
+        }
+        else if (a<b){
+            System.out.println(b+" is greater than "+a);
+        }
+        else{
+            System.out.println("Both are equal");
+        }
+
+    }
+}
