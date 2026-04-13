@@ -1,0 +1,32 @@
+// Program 1.6 - Write a Java program that accepts three integers from the user and returns true if two or more of them (integers) have the same rightmost digit. The integers are non-negative. 
+import java.util.Scanner;
+class Operations{
+    public static void main (String ar[]){
+        System.out.println("Enter three integers to check if any of them have the same rightmost digit");
+        Scanner s = new Scanner (System.in);
+        int int1,int2,int3,rem1,rem2,rem3;
+        int1 = s.nextInt();
+        int2 = s.nextInt();
+        int3 = s.nextInt();
+        rem1 = int1%10;
+        rem2 = int2%10;
+        rem3 = int3%10;
+        if (rem1==rem2){
+            if(rem1==rem3){
+                System.out.println("All three entered integers have the same rightmost digit "+rem1+".");
+            }
+            else{
+                System.out.println("Only "+int1+" and "+int2+" have the same rightmost digit "+rem1+".");
+            }
+        }
+        else if (rem1==rem3){
+               System.out.println("Only "+int1+" and "+int3+" have the same rightmost digit "+rem1+".");
+        }
+        else if (rem2==rem3){
+               System.out.println("Only "+int2+" and "+int3+" have the same rightmost digit "+rem2+".");
+        }
+        else{
+            System.out.println("None of the entered integers have the same rightmost digit ");
+        }
+    }
+}
