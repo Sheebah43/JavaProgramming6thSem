@@ -1,0 +1,32 @@
+// Program 1.2 - Write a Java program to print the area and perimeter of a circle and rectangle.
+import java.util.Scanner;
+class Operations{
+    static final double PI = 3.14;
+    public static void main (String ar[]){
+        System.out.println("To find area and perimeter or circle, enter 0 and else, enter 1 for rectangle");
+        Scanner s = new Scanner (System.in);
+        int shape = s.nextInt();
+        if (shape==0){
+                circle(s);
+            }
+        else if (shape==1){
+            rectangle(s);
+        }
+        else{
+            System.out.println("Enter either 0 or 1");
+        }
+        }
+    public static void circle (Scanner s){
+        System.out.println("Enter the radius of circle");
+        float radius;
+        radius = s.nextFloat();
+        System.out.println("For radius " + radius + " area = " + PI*radius*radius + " and perimeter = " + 2*PI*radius);
+    }
+    public static void rectangle (Scanner s){
+        System.out.println("Enter the length and breadth of the rectangle");
+        float length, breadth;
+        length = s.nextFloat();
+        breadth = s.nextFloat();
+        System.out.println("For length = " + length + " and breadth = " + breadth + " area = "+ length*breadth + " and perimeter = " + 2*(length+breadth));
+    }
+}
