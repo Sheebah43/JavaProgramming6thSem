@@ -1,0 +1,40 @@
+// Program 1.1: Write a Java program to print the sum (addition), multiply, subtract, divide and remainder of two numbers. 
+import java.util.Scanner;
+class Operations{
+    public static void main (String ar[]){
+        System.out.println("Enter two numbers");
+        Scanner s = new Scanner (System.in);
+        int x, y;
+        x = s.nextInt();
+        y = s.nextInt();
+        add(x,y);
+        sub(x,y);
+        multiply(x,y);
+        divide(x,y);
+    }
+    public static void add(int a, int b){
+        int sum;
+        sum = a + b;
+        System.out.println("Sum is " + sum);
+    }
+    public static void sub (int a, int b){
+        int difference;
+        difference = a - b;
+        System.out.println("Difference is " + difference);
+    }
+    public static void multiply (int a, int b){
+        int product;
+        product = a * b;
+        System.out.println("Product is " + product);
+    }
+    public static void divide (int a, int b){
+        int quotient;
+        if (b==0){
+            System.out.println("Denominator cannot be zero!");
+        }
+        else{
+            quotient = a / b;
+            System.out.println("Quotient is " + quotient);
+        }
+    }
+ }
