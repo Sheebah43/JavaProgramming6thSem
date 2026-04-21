@@ -1,0 +1,52 @@
+/* Program 2.1: Write a Java program that accepts a 5-digit number and prints:
+Sum of digits at even positions  
+Sum of digits at odd positions  
+Difference between the two  
+Example: 
+Input: 54321 
+Odd position sum = 5+3+1 
+Even position sum = 4+2 */
+
+import java.util.Scanner;
+class Operations{
+    public static void main (String ar[]){
+        int num,i,size=5;
+        int[] storeDigits = new int[size];
+        System.out.println("Enter a five-digit number");
+        Scanner s = new Scanner (System.in);
+        num = s.nextInt();
+            if(num>=10000 && num<99999){
+                for(i=0;i<size;i++){
+                storeDigits[size-1-i] = num%10;
+                num=num/10;
+                }
+                System.out.println("Array of digits is as: ");
+                for(i = 0; i < storeDigits.length; i++){
+                System.out.print(storeDigits[i] + " ");
+                }
+                sumOddPlaces(storeDigits);
+                sumEvenPlaces(storeDigits);
+            }
+            else{
+                System.out.println("Enter a 5-digit number!\n");
+            }
+    }
+    public static void sumOddPlaces (int[] arr){
+        int i,oddSum=0;
+        for(i = 0; i<arr.length;i++){
+            if((i + 1) % 2 != 0){
+                oddSum+= arr[i];
+            }
+        }
+        System.out.println("\nSum of odd place digits is " + oddSum);
+    }
+    public static void sumEvenPlaces (int[] arr){
+        int i,evenSum=0;
+        for(i = 0; i<arr.length;i++){
+            if((i + 1) % 2 == 0){
+                evenSum+= arr[i];
+            }
+        }
+        System.out.println("\nSum of even place digits is " + evenSum);
+    }
+}
