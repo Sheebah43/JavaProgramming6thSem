@@ -1,0 +1,55 @@
+/* Assignment 2: Write a Java program that classifies a number as: 
+Positive / Negative / Zero  
+Even / Odd  
+Multiple of 5 or not  
+Three-digit or not  
+Display all classifications. */
+import java.util.Scanner;
+class Classification{
+    public static void main (String ar[]){
+        int a;
+        System.out.println("Enter a number.");
+        Scanner s = new Scanner (System.in);
+        a = s.nextInt();
+        evenOdd(a);
+        posNegZero(a);
+        multipleOfFive(a);
+        threeDigits(a);
+    }
+    public static void evenOdd (int num){
+        if (num%2==0){
+            System.out.println("The number is even.\n");
+        }
+        else{
+            System.out.println("The number is odd.\n");
+        }
+    }
+    public static void posNegZero (int num){
+        if (num>0){
+            System.out.println("The number is positive.\n");
+        }
+        else if(num<0){
+            System.out.println("The number is negative.\n");
+        }
+        else{
+            System.out.println("The number is zero.\n");
+        }
+    }
+    public static void multipleOfFive (int num){
+        if (num%5==0){
+            System.out.println("The number is a multiple of 5.\n");
+        }
+        else{
+            System.out.println("The number is NOT a multiple of 5.\n");
+        }
+    }
+    public static void threeDigits (int num){
+        if (num>100 && num<999){
+            System.out.println("The number is a 3-digit number.\n");
+        }
+        else{
+            System.out.println("The number is NOT a 3-digit number.\n");
+        }
+    }
+}
+    
