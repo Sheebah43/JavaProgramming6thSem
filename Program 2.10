@@ -1,0 +1,7 @@
+/* Program 2.10: Write a Java program that: 
+Replaces all 0 with 1  
+Replaces all 1 with 0  
+Keeps other digits same  
+Example: 
+Input: 102301 
+Output: 012310*/
