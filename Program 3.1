@@ -1,3 +1,59 @@
-/* Program 3.1: Write a Java program to read n elements into a one
-dimensional array and find the sum, average, maximum, and 
-minimum values.  */
+/* Program 3.1: Write a Java program to read n elements into a one dimensional array and find the sum, average, maximum, and minimum values.  */
+import java.util.Scanner;
+public class ArrayOperations {
+    public static void main(String[] args) {
+        Scanner s = new Scanner (System.in);
+        System.out.println("Enter the number of elements\n");
+        int size = s.nextInt();
+        int [] array = new int [size];
+        readElements(array,size,s);
+    }
+    public static void readElements(int[] arr, int n, Scanner s){
+        System.out.println("Enter the elements:\n");
+        for(int i=0; i<n; i++){
+            arr[i] = s.nextInt();
+        }
+        printElements(arr,n);
+        maxOfElements(arr,n);
+        minOfElements(arr,n);
+    }
+    public static void printElements(int[] arr, int n){
+        System.out.println("Entered elements are:\n");
+        for(int i=0; i<n; i++){
+            System.out.println("Element ["+i+"] ="+arr[i]);
+        }
+        addElements(arr,n);
+    }
+    public static void addElements(int[] arr, int n){
+        int sum=0;
+        for(int i=0; i<n; i++){
+            sum+=arr[i];
+        }
+        System.out.println("Entered elements' sum is:\n"+sum);
+        avgElements(arr,sum, n);
+    }
+    public static void avgElements(int[] arr, int sum, int n){
+        int avg;
+        avg = sum/n;
+        System.out.println("Entered elements' average is:\n"+avg);
+    }
+    public static void maxOfElements(int[] arr, int n) {
+        int maxElement = arr[0];  
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > maxElement) {
+                maxElement = arr[i];
+            }
+        }
+        System.out.println("Maximum element is: " + maxElement);
+    }
+    public static void minOfElements(int[] arr, int n) {
+        int minElement = arr[0];  
+        for (int i = 1; i < n; i++) {
+            if (arr[i] < minElement) {
+                minElement = arr[i];
+            }
+        }
+        System.out.println("Minimum element is: " + minElement);
+    }
+    
+}
