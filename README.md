@@ -12,6 +12,17 @@ Posting Java programs practiced in the lab at the University.
 <h2>Date: 28<sup>th</sup> April, 2026</h2>
 <h4>Lab 3: Arrays and Strings</h4>
 <img width="607" height="747" alt="image" src="https://github.com/user-attachments/assets/3e6f57fa-ceef-4734-b19c-c184dbe0719e" />
+<h2>Date: 5<sup>th</sup> May, 2026</h2>
+<h4>Lab 4: Classes and Objects</h4>
+<img width="588" height="778" alt="image" src="https://github.com/user-attachments/assets/d67117f7-b7e9-4e61-b132-b245d7b01442" />
+<h2>Date: 12<sup>th</sup> May, 2026</h2>
+<h4>Lab 4: Inheritance</h4>
+<img width="504" height="829" alt="image" src="https://github.com/user-attachments/assets/89618c7a-ca15-4f25-8f78-d0c6ad1c3e82" />
+<img width="507" height="560" alt="image" src="https://github.com/user-attachments/assets/a2c59a9d-0ce1-4ff8-9abd-079f955b22e3" />
+<img width="501" height="835" alt="image" src="https://github.com/user-attachments/assets/75b98c10-319a-4626-bb08-27ff7a08fd1b" />
+
+
+
 
 
 
