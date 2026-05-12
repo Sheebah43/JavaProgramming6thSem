@@ -1,2 +1,29 @@
-Program 5.2: Create a class “Person” with fields “name” and “age” and a method “display()” that prints the name and age of the person. Create a subclass “Employee” that extends “Person” and adds a field “salary” and a method “display()” that prints the name, age, and salary of the employee. 
-Create an object of the “Person” class and call the “display()” method. Create an object of the `Employee` class and call the “display()” method. 
+/* Program 5.2: Create a class “Person” with fields “name” and “age” and a method “display()” that prints the name and age of the person. Create a subclass “Employee” that extends “Person” and adds a field “salary” and a method “display()” that prints the name, age, and salary of the employee. 
+Create an object of the “Person” class and call the “display()” method. Create an object of the `Employee` class and call the “display()” method. */
+public class Main{
+    public static void main (String [] args){
+        Person p = new Person();
+        p.name = "Sheebah";
+        p.age = 23;
+        p.display();
+        Employee e = new Employee();
+        e.name = "Rutba";
+        e.age = 20;
+        e.salary = 150000;
+        e.display();
+    }
+}
+class Person{
+    String name;
+    int age;
+    void display(){
+        System.out.println("Name of the person is "+name+" and their age is "+age);
+    }
+}
+class Employee extends Person{
+    float salary;
+    @Override
+    void display(){
+        System.out.println("Name of the person is "+name+", their age is "+age+" and their salary is "+salary);
+    }
+}
