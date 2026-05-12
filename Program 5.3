@@ -1,2 +1,25 @@
-Program 5.3: Create a class “Shape” with a method “getArea()” that returns the area of the shape. Create a subclass “Rectangle” that extends “Shape” and adds fields “length” and “width” and overrides the “getArea()” method to return the area of the rectangle.
-Create an object of the “Shape” class and call the “getArea()” method. Create an object of the “Rectangle” class and call the “getArea()” method. 
+/* Program 5.3: Create a class “Shape” with a method “getArea()” that returns the area of the shape. Create a subclass “Rectangle” that extends “Shape” and adds fields “length” and “width” and overrides the “getArea()” method to return the area of the rectangle. Create an object of the “Shape” class and call the “getArea()” method. Create an object of the “Rectangle” class and call the “getArea()” method. */
+public class Main{
+    public static void main(String[] args){
+        Shape s = new Shape();
+        s.getArea();
+        Rectangle r = new Rectangle();
+        r.length = 1.5f;
+        r.width = 1.5f;
+        System.out.println("Area of rectangle is "+r.getArea());
+    }
+}
+class Shape{
+    float getArea(){
+        System.out.println("No shape entered!");
+        return 0;
+    }
+}
+
+class Rectangle extends Shape{
+    float length, width;
+    @Override
+    float getArea(){
+        return length*width;
+    }
+}
