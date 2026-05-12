@@ -1,2 +1,25 @@
-Program 5.1: Create a class “Vehicle” with a method “start()” that prints “Vehicle started”.Create a subclass “Car” that extends “Vehicle” and overrides the “start()” method to print “Car started”.
-Create an object of the “Vehicle” class and call the “start()” method. Create an object of the “Car” class and call the “start()” method. 
+/* Program 5.1: Create a class “Vehicle” with a method “start()” that prints “Vehicle started”.Create a subclass “Car” that extends “Vehicle” and overrides the “start()” method to print “Car started”.
+Create an object of the “Vehicle” class and call the “start()” method. Create an object of the “Car” class and call the “start()” method. */
+public class Main{
+    public static void main (String[] args){
+        //Creating an object of class Vehicle
+        Vehicle v = new Vehicle();
+        System.out.println("Calling the start() method of class Vehicle.");
+        v.start();
+        //Creating an object of class Car
+        Car c = new Car();
+        System.out.println("Calling the start() method of class Car.");
+        c.start();
+    }
+}
+class Vehicle{
+    void start(){
+        System.out.println("Vehicle started.");
+    }
+}
+class Car extends Vehicle{
+    @Override
+    void start(){
+        System.out.println("Car started.");
+    }
+}
