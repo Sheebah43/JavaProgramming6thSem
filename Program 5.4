@@ -1,3 +1,29 @@
-Program 5.4: Create a class “BankAccount” with fields “accountNumber”, “balance”, and “interestRate” and a method “deposit()” that adds an amount to the balance. 
-Create a subclass “SavingsAccount” that extends “BankAccount” and adds a field “minimumBalance” and a method “withdraw()” that subtracts an amount from the balance.ect of the “BankAccount” class and call the “deposit()” method. 
-Create an object of the “SavingsAccount” class and call the “deposit()” and “withdraw()” methods. 
+/* Program 5.4: Create a class “BankAccount” with fields “accountNumber”, “balance”, and “interestRate” and a method “deposit()” that adds an amount to the balance. Create a subclass “SavingsAccount” that extends “BankAccount” and adds a field “minimumBalance” and a method “withdraw()” that subtracts an amount from the balance. Create an object of the “BankAccount” class and call the “deposit()” method. Create an object of the “SavingsAccount” class and call the “deposit()” and “withdraw()” methods.  */
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        BankAccount b = new BankAccount();
+        b.accountNumber = 123456;
+        b.balance = 5000;
+        b.interestRate = 0.1;
+        System.out.println("If you wish to deposit money, enter 0.\n");
+        Scanner s = new Scanner(System.in);
+        int activity = s.nextInt();
+        if (activity == 0){
+            System.out.println("Enter the amount you wish to deposit\n");
+            double depositAmt = s.nextInt();
+        System.out.println("The updated balance is "+b.deposit(depositAmt));
+
+        }
+    }
+}
+class BankAccount{
+    double accountNumber, balance, interestRate;
+    double deposit(double depositAmt){
+        balance += depositAmt;
+        return balance;
+    }
+    
+}
