@@ -21,10 +21,10 @@ Posting Java programs practiced in the lab at the University.
 <img width="507" height="560" alt="image" src="https://github.com/user-attachments/assets/a2c59a9d-0ce1-4ff8-9abd-079f955b22e3" />
 <img width="501" height="835" alt="image" src="https://github.com/user-attachments/assets/75b98c10-319a-4626-bb08-27ff7a08fd1b" />
 <h4>Date: 9<sup>th</sup> June, 2026</h4>
-<img width="475" height="563" alt="image" src="https://github.com/user-attachments/assets/08667250-8b18-4ac9-98a8-b4fe04359c5f" />
-<img width="387" height="862" alt="image" src="https://github.com/user-attachments/assets/4a2bfcfb-02dd-49aa-9585-3e3da35db175" />
-<img width="326" height="623" alt="image" src="https://github.com/user-attachments/assets/0f32c2d2-a33f-4f8d-951b-2bac1ce68387" />
-<img width="305" height="532" alt="image" src="https://github.com/user-attachments/assets/5c400974-8717-45aa-ac23-358c3fe27ca2" />
+<img width="475" height="563" alt="image" src="https://github.com/user-attachments/assets/08667250-8b18-4ac9-98a8-b4fe04359c5f" /><br>
+<img width="387" height="862" alt="image" src="https://github.com/user-attachments/assets/4a2bfcfb-02dd-49aa-9585-3e3da35db175" /><br>
+<img width="326" height="623" alt="image" src="https://github.com/user-attachments/assets/0f32c2d2-a33f-4f8d-951b-2bac1ce68387" /><br>
+<img width="305" height="532" alt="image" src="https://github.com/user-attachments/assets/5c400974-8717-45aa-ac23-358c3fe27ca2" /><br>
 <img width="317" height="647" alt="image" src="https://github.com/user-attachments/assets/1b79fa8c-a0ad-4ad4-9c41-87f9afed01df" />
 
 
