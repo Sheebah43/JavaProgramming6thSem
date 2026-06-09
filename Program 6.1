@@ -19,3 +19,91 @@ Accept consumer name, consumer ID, and units consumed.
 Calculate the electricity bill based on the consumer type.  
 Display complete bill details.  
 Demonstrate the use of interfaces, packages, and runtime polymorphism.  */
+import java.util.Scanner;
+//As per the question
+public class ElectricityBillCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Consumer Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Consumer ID: ");
+        String id = sc.nextLine();
+
+        System.out.print("Enter Units Consumed: ");
+        int units = sc.nextInt();
+
+        System.out.print("Enter Consumer Type (0 for Domestic and 1 for Commercial): ");
+        int type = sc.nextInt();
+
+        BillCalculator consumer;
+
+        if (type==0) {
+            consumer = new DomesticConsumer(name, id, units);
+            ((DomesticConsumer)consumer).displayBill();
+        } else if (type==1) {
+            consumer = new CommercialConsumer(name, id, units);
+            ((CommercialConsumer)consumer).displayBill();
+        } else {
+            System.out.println("Invalid Consumer Type!");
+        }
+
+        sc.close();
+    }
+}
+
+interface BillCalculator {
+    double calculateBill(int units); //Given in the assignment
+}
+
+class DomesticConsumer implements BillCalculator {
+    private String consumerName;
+    private String consumerID;
+    private int units;
+
+    public DomesticConsumer(String consumerName, String consumerID, int units) {
+        this.consumerName = consumerName;
+        this.consumerID = consumerID;
+        this.units = units;
+    }
+
+    @Override
+    public double calculateBill(int units) {
+        return units * 6;
+    }
+
+    public void displayBill() {
+        System.out.println("\n--- Domestic Consumer Bill ---");
+        System.out.println("Consumer Name: " + consumerName);
+        System.out.println("Consumer ID: " + consumerID);
+        System.out.println("Units Consumed: " + units);
+        System.out.println("Bill Amount: " + calculateBill(units));
+    }
+}
+
+class CommercialConsumer implements BillCalculator {
+    private String consumerName;
+    private String consumerID;
+    private int units;
+
+    public CommercialConsumer(String consumerName, String consumerID, int units) {
+        this.consumerName = consumerName;
+        this.consumerID = consumerID;
+        this.units = units;
+    }
+
+    @Override
+    public double calculateBill(int units) {
+        return units * 9; 
+    }
+
+    public void displayBill() {
+        System.out.println("\n--- Commercial Consumer Bill ---");
+        System.out.println("Consumer Name: " + consumerName);
+        System.out.println("Consumer ID: " + consumerID);
+        System.out.println("Units Consumed: " + units);
+        System.out.println("Bill Amount: " + calculateBill(units)+" Rupees");
+    }
+}
+
