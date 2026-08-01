@@ -3,3 +3,25 @@
 Pattern: 
 ×3, +1, ×3, +1 ... 
 Print first N terms. */
+import java.util.Scanner;
+
+public class SeriesGenerator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of terms: ");
+        int noOfTerms = sc.nextInt();
+
+        int firstTerm = 2;
+        System.out.print(firstTerm + " "); // print first term
+
+        for (int i = 1; i < noOfTerms; i++) {
+            if (i % 2 != 0) {
+                firstTerm *= 3;   // odd step → multiply by 3
+            } else {
+                firstTerm += 1;   // even step → add 1
+            }
+            System.out.print(firstTerm + " ");
+        }
+    }
+}
+
