@@ -1,1 +1,33 @@
 // Program 1.9 - Write a program that takes the x – y coordinates of a point in the Cartesian plane and prints a message telling either an axis on which the point lies or the quadrant in which it is found. 
+import java.util.Scanner;
+public class CartesianPlace {
+    public static void quadrant(double x, double y){
+        if(x>=0){
+            if(y>=0){
+                System.out.println("The point is in the first quadrant");
+            }
+            else{
+                System.out.println("The point is in the fourth quadrant");
+            }
+        }
+        else{
+            if(y>=0){
+                System.out.println("The point is in the second quadrant");
+            }
+            else{
+                System.out.println("The point is in the third quadrant");
+            }
+        }
+    }
+    public static void main(String[] args){
+        double a, b;
+        System.out.print("Enter the x coordinate:\n");
+        Scanner sc = new Scanner(System.in);        
+        a = sc.nextDouble();
+        System.out.print("Enter the y coordinate:\n");
+        b = sc.nextDouble();
+        quadrant(a,b);
+    }
+    
+}
+
