@@ -1,3 +1,47 @@
 /* Program 3.8: Write a Java program using a three-dimensional array to 
 store marks of students for multiple classes and subjects and 
 calculate total marks of each student. */
+import java.util.Scanner;
+
+public class StudentMarks3D {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Dimensions: classes, students, subjects
+        System.out.print("Enter number of classes: ");
+        int classes = sc.nextInt();
+        System.out.print("Enter number of students per class: ");
+        int students = sc.nextInt();
+        System.out.print("Enter number of subjects: ");
+        int subjects = sc.nextInt();
+
+        int[][][] marks = new int[classes][students][subjects];
+
+        // Input marks
+        for (int c = 0; c < classes; c++) {
+            System.out.println("\nEntering marks for Class " + (c + 1) + ":");
+            for (int s = 0; s < students; s++) {
+                System.out.println(" Student " + (s + 1) + ":");
+                for (int subj = 0; subj < subjects; subj++) {
+                    System.out.print("  Subject " + (subj + 1) + ": ");
+                    marks[c][s][subj] = sc.nextInt();
+                }
+            }
+        }
+
+        // Calculate total marks of each student
+        System.out.println("\n--- Total Marks of Each Student ---");
+        for (int c = 0; c < classes; c++) {
+            System.out.println("Class " + (c + 1) + ":");
+            for (int s = 0; s < students; s++) {
+                int total = 0;
+                for (int subj = 0; subj < subjects; subj++) {
+                    total += marks[c][s][subj];
+                }
+                System.out.println(" Student " + (s + 1) + " Total = " + total);
+            }
+        }
+
+        sc.close();
+    }
+}
