@@ -1,3 +1,33 @@
 /* Program 3.5: Write a Java program to read a matrix using a two
 dimensional array and compute the sum of each row and 
 each column.  */
+import java.util.Scanner;
+public class SumOfMatrix {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of rows:\n");
+        int rows = sc.nextInt();
+        System.out.println("Enter the number of columns:\n");
+        int cols = sc.nextInt();
+        int [][] matrix = new int[rows][cols];
+        System.out.println("Enter the elements of the matrix:\n");
+        for(int i=0; i<rows; i++){
+            for(int j=0; j<cols; j++){
+                matrix[i][j]=sc.nextInt();
+            }
+        }
+        sc.close();
+        for(int i=0; i<rows; i++){
+            int sumOfRows=0;
+            int sumOfCols=0;
+            for(int j=0; j<cols; j++){
+                sumOfRows+=matrix[i][j];
+                sumOfCols+=matrix[j][i];
+            }
+            System.out.println("Sum of row " + (i+1) + ": " + sumOfRows);
+            System.out.println("Sum of column " + (i+1) + ": " + sumOfCols);
+        }
+    }
+}
+
+
