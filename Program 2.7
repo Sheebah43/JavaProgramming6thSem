@@ -4,3 +4,24 @@
   32123 
  4321234 
 Use nested loops. */
+public class NumberPattern {
+    public static void main(String[] args) {
+        int n = 4; // number of rows
+
+        for (int i = 1; i <= n; i++) {
+            for (int s = 1; s <= n - i; s++) {
+                System.out.print(" ");
+            }
+            // descending numbers
+            for (int j = i; j >= 1; j--) {
+                System.out.print(j);
+            }
+            // ascending numbers
+            for (int j = 2; j <= i; j++) {
+                System.out.print(j);
+            }
+            // move to next line
+            System.out.println();
+        }
+    }
+}
