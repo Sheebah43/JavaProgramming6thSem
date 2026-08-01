@@ -1,2 +1,72 @@
 /* Program 3.7: Write a Java program to check whether a given matrix is 
 symmetric using a two-dimensional array.  */
+import java.util.Scanner;
+public class MatrixSymmetricCheck{
+    static Scanner sc = new Scanner(System.in);
+    public static int[][] readElements(int rows, int  cols){
+        System.out.println("Enter the elements of the matrix:\n");
+        int [][] matrix = new int [rows][cols];
+        for(int i = 0; i<rows; i++){
+            for(int j = 0; j<cols; j++){
+                matrix[i][j] = sc.nextInt();
+            }
+        } 
+        return matrix;
+    }
+    public static void printElements(int[][] matrix, int rows, int cols){
+        for(int i = 0; i<rows; i++){
+            for(int j = 0; j<cols; j++){
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println("\n");
+        }
+    }
+    public static int[][] transposeMatrix(int[][] transpose,int [][]matrix, int rows, int cols){
+        System.out.println("The transpose of the matrix is:\n");
+        for(int i=0; i<rows; i++){
+            for(int j = 0; j<cols; j++){
+                transpose[j][i] = matrix[i][j];
+            }
+        }
+        printElements(transpose,rows,cols);
+        return transpose;
+    }
+    public static void checkEqualityOfMatrices(int [][] transpose,int [][]matrix, int rows, int cols){
+        int flag = 0;
+        for(int i=0; i<rows; i++){
+            for(int j = 0; j<cols; j++){
+                if(transpose[i][j] != matrix[i][j]){
+                    flag = 1;
+                    break;
+                }
+            }
+            if(flag==1){
+                    break;
+            }
+        }
+        if(flag==0){
+            System.out.println("The matrix is symmetric");
+        }else{
+            System.out.println("The matrix is not symmetric");
+        }
+        
+    }
+    public static void main (String [] args){
+        System.out.print("Enter the number of rows:\n");
+        int rows = sc.nextInt(); 
+
+        System.out.print("Enter the number of columns:\n");
+        int cols = sc.nextInt();
+
+        int [][] matrix = new int[rows][cols];
+        matrix = readElements(rows,cols);
+        
+        System.out.println("The elements of the matrix are:\n");
+        printElements(matrix,rows,cols);
+
+        int [][] transpose = new int[cols][rows];
+        transpose = transposeMatrix(transpose,matrix,rows,cols);
+
+        checkEqualityOfMatrices(transpose,matrix,rows,cols);
+    }
+}
