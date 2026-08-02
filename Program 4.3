@@ -1,0 +1,68 @@
+/*  Program 4.3: 3. Write a Java program to create a class Rectangle with length and breadth as data members. 
+Using objects, calculate area and perimeter, determine whether the rectangle is a square, and compare two rectangles based on area and diagonal length.
+*/
+class Rectangle {
+    double length;
+    double breadth;
+
+    // Constructor
+    Rectangle(double length, double breadth) {
+        this.length = length;
+        this.breadth = breadth;
+    }
+
+    // Method to calculate area
+    double getArea() {
+        return length * breadth;
+    }
+
+    // Method to calculate perimeter
+    double getPerimeter() {
+        return 2 * (length + breadth);
+    }
+
+    // Method to check if rectangle is a square
+    boolean isSquare() {
+        return length == breadth;
+    }
+
+    // Method to calculate diagonal length
+    double getDiagonal() {
+        return Math.sqrt(length * length + breadth * breadth);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Rectangle r1 = new Rectangle(5, 5);
+        Rectangle r2 = new Rectangle(6, 4);
+
+        System.out.println("Rectangle 1 Area: " + r1.getArea());
+        System.out.println("Rectangle 1 Perimeter: " + r1.getPerimeter());
+        System.out.println("Rectangle 1 Diagonal: " + r1.getDiagonal());
+        System.out.println("Is Rectangle 1 a square? " + r1.isSquare());
+
+        System.out.println("Rectangle 2 Area: " + r2.getArea());
+        System.out.println("Rectangle 2 Perimeter: " + r2.getPerimeter());
+        System.out.println("Rectangle 2 Diagonal: " + r2.getDiagonal());
+        System.out.println("Is Rectangle 2 a square? " + r2.isSquare());
+
+        // Compare based on area
+        if (r1.getArea() > r2.getArea()) {
+            System.out.println("Rectangle 1 has a larger area than Rectangle 2.");
+        } else if (r1.getArea() < r2.getArea()) {
+            System.out.println("Rectangle 2 has a larger area than Rectangle 1.");
+        } else {
+            System.out.println("Both rectangles have the same area.");
+        }
+
+        // Compare based on diagonal length
+        if (r1.getDiagonal() > r2.getDiagonal()) {
+            System.out.println("Rectangle 1 has a longer diagonal than Rectangle 2.");
+        } else if (r1.getDiagonal() < r2.getDiagonal()) {
+            System.out.println("Rectangle 2 has a longer diagonal than Rectangle 1.");
+        } else {
+            System.out.println("Both rectangles have equal diagonals.");
+        }
+    }
+}
