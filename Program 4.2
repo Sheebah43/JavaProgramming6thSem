@@ -1,38 +1,47 @@
-/* Progra 4.2: Write a Java program to read n elements in a one-dimensional array and display the elements in reverse order and count the number of even and odd elements.*/
-import java.util.Scanner;
+/*    Program 4.2: Write a Java program to create a class Circle with radius as a data member. Using objects, calculate area and circumference, compare two circles based on area, and determine whether one circle can fit inside another.  */
+class Circle {
+    double radius;
 
-public class ArrayExample {
-    public static void processArray(int[] arr) {
-        // Revese order
-        System.out.print("Reverse order: ");m
-        for (int i = arr.length - 1; i >= 0; i--) {
-            System.out.print(arr[i] + " ");
-        }
-
-        int evenCount = 0, oddCount = 0;
-        for (int num : arr) {
-            if (num % 2 == 0) evenCount++;
-            else oddCount++;
-        }
-
-        System.out.println("\nEven count = " + evenCount);
-        System.out.println("Odd count = " + oddCount);
+    Circle(double radius) {
+        this.radius = radius;
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter n: ");
-        int n = sc.nextInt();
+    double getArea() {
+        return Math.PI * radius * radius;
+    }
 
-        int[] numbers = new int[n];
-        System.out.println("Enter " + n + " elements:");
-        for (int i = 0; i < n; i++) {
-            numbers[i] = sc.nextInt();
+    double getCircumference() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circle c1 = new Circle(5);
+        Circle c2 = new Circle(7);
+
+        System.out.println("Circle 1 Area: " + c1.getArea());
+        System.out.println("Circle 1 Circumference: " + c1.getCircumference());
+
+        System.out.println("Circle 2 Area: " + c2.getArea());
+        System.out.println("Circle 2 Circumference: " + c2.getCircumference());
+
+        // Direct comparison using if statement
+        if (c1.getArea() > c2.getArea()) {
+            System.out.println("Circle 1 has a larger area than Circle 2.");
+        } else if (c1.getArea() < c2.getArea()) {
+            System.out.println("Circle 2 has a larger area than Circle 1.");
+        } else {
+            System.out.println("Both circles have the same area.");
         }
 
-        // Argument passed here
-        processArray(numbers);
-
-        sc.close();
+        // Check if one circle can fit inside another
+        if (c1.radius < c2.radius) {
+            System.out.println("Circle 1 can fit inside Circle 2.");
+        } else if (c2.radius < c1.radius) {
+            System.out.println("Circle 2 can fit inside Circle 1.");
+        } else {
+            System.out.println("Both circles are equal in size.");
+        }
     }
 }
