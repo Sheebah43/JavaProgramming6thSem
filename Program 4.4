@@ -1,0 +1,51 @@
+/*  Program 4.4: Write a Java program to create a class Triangle with three sides as data members.
+Using objects, validate whether the sides form a triangle, identify its type (equilateral, isosceles, or scalene),
+and calculate its area using Heron's Formula.
+*/
+class Triangle {
+    double side1, side2, side3;
+
+    // Constructor
+    Triangle(double side1, double side2, double side3) {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
+
+    // Check if sides form a valid triangle
+    boolean isValid() {
+        return (side1 + side2 > side3) &&
+               (side2 + side3 > side1) &&
+               (side1 + side3 > side2);
+    }
+
+    // Identify type of triangle
+    String getType() {
+        if (!isValid()) return "Not a valid triangle";
+        if (side1 == side2 && side2 == side3) return "Equilateral";
+        else if (side1 == side2 || side2 == side3 || side1 == side3) return "Isosceles";
+        else return "Scalene";
+    }
+
+    // Calculate area using Heron's formula
+    double getArea() {
+        if (!isValid()) return 0;
+        double s = (side1 + side2 + side3) / 2.0; // semi-perimeter
+        return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Triangle t1 = new Triangle(3, 4, 5);
+        Triangle t2 = new Triangle(5, 5, 5);
+
+        System.out.println("Triangle 1 valid? " + t1.isValid());
+        System.out.println("Triangle 1 type: " + t1.getType());
+        System.out.println("Triangle 1 area: " + t1.getArea());
+
+        System.out.println("Triangle 2 valid? " + t2.isValid());
+        System.out.println("Triangle 2 type: " + t2.getType());
+        System.out.println("Triangle 2 area: " + t2.getArea());
+    }
+}
