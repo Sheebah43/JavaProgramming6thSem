@@ -1,0 +1,50 @@
+/*  Program 7.8: develop a Java program to calculate the percentage of marks obtained by a student. 
+Use exception handling to prevent division-by-zero errors and handle invalid numeric inputs entered by the user. 
+*/
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class StudentPercentage {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter number of subjects: ");
+            int subjects = sc.nextInt();
+
+            if (subjects <= 0) {
+                throw new ArithmeticException("Number of subjects must be greater than zero.");
+            }
+
+            int totalMarks = 0;
+            int maxMarksPerSubject = 100; // assuming each subject is out of 100
+
+            for (int i = 1; i <= subjects; i++) {
+                System.out.print("Enter marks for subject " + i + ": ");
+                int marks = sc.nextInt();
+
+                if (marks < 0 || marks > maxMarksPerSubject) {
+                    throw new IllegalArgumentException("Marks must be between 0 and " + maxMarksPerSubject);
+                }
+
+                totalMarks += marks;
+            }
+
+            // Calculate percentage
+            double percentage = (double) totalMarks / (subjects * maxMarksPerSubject) * 100;
+            System.out.println("\n--- Result ---");
+            System.out.println("Total Marks: " + totalMarks + " / " + (subjects * maxMarksPerSubject));
+            System.out.println("Percentage: " + percentage + "%");
+
+        } catch (InputMismatchException e) {
+            System.out.println("Error: Invalid input! Please enter numeric values only.");
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            sc.close();
+            System.out.println("Program terminated safely.");
+        }
+    }
+}
