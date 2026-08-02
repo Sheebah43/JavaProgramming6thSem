@@ -27,6 +27,17 @@ Posting Java programs practiced in the lab at the University.
 <img width="326" height="623" alt="image" src="https://github.com/user-attachments/assets/0f32c2d2-a33f-4f8d-951b-2bac1ce68387" /><br>
 <img width="305" height="532" alt="image" src="https://github.com/user-attachments/assets/5c400974-8717-45aa-ac23-358c3fe27ca2" /><br>
 <img width="317" height="647" alt="image" src="https://github.com/user-attachments/assets/1b79fa8c-a0ad-4ad4-9c41-87f9afed01df" />
+<h4>Date: 19<sup>rd</sup> June, 2026</h4>
+<h4>Lab 7: Exception Handling</h4>
+<h4>Date: 23<sup>rd</sup> June, 2026</h4>
+<img width="830" height="854" alt="image" src="https://github.com/user-attachments/assets/a50d50b5-88e4-44a0-b1dc-ede9ef9a4295" /><br>
+<h4>Lab 8: Exception Handling</h4>
+<img width="841" height="567" alt="image" src="https://github.com/user-attachments/assets/72c8b714-0e55-4f6a-b572-150b41a93cf0" /><br>
+<h4>Date: 30<sup>th</sup> June, 2026</h4>
+<h4>Lab 9: Multithreading Basics and Thread Priority</h4>
+<img width="814" height="826" alt="image" src="https://github.com/user-attachments/assets/b4308044-7f0b-41c3-9dfd-9b125dc27191" /><br>
+
+
 
 
 
