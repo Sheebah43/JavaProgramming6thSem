@@ -1,0 +1,39 @@
+/*  Program 8.1: Write a Java program that accepts two integers from the user and performs division. 
+The program should handle ArithmeticException when the user attempts to divide by zero and InputMismatchException when non-numeric input is entered. 
+Display appropriate error messages and ensure that the program terminates gracefully without crashing. 
+*/
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class DivideByZeroDemo {
+    double num, den;
+    DivideByZeroDemo(double num, double den){
+        this.num = num;
+        this.den = den;
+    }
+    public double performDivision() throws ArithmeticException, InputMismatchException{
+        if(den==0){
+            throw new ArithmeticException ("Denominator can't be zero");
+        }
+        return num/den;
+    }
+    public static void main (String [] args){
+        Scanner sc = new Scanner (System.in);
+        try{
+            System.out.println("Enter numerator:\n");
+        double numerator = sc.nextDouble();
+        System.out.println("Enter denominator:\n");
+        double denominator = sc.nextDouble();
+        DivideByZeroDemo dem = new DivideByZeroDemo(numerator, denominator);
+        double result = dem.performDivision();
+        System.out.println(numerator + "/" + denominator + "=" + result);
+        }
+        catch(ArithmeticException e){
+            System.out.println(e.getMessage());
+        }
+        catch(InputMismatchException ex){
+            System.out.println("Please enter an integer input.");
+        }
+        
+    }
+}
