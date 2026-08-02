@@ -1,0 +1,47 @@
+/*  Program 4.8: Write a Java program to create a class Interest with principal, rate, and time as data members. 
+Using objects, calculate both simple interest and compound interest, compare the results, and display the difference in returns.
+*/
+class Interest {
+    double principal;
+    double rate;
+    double time;
+
+    // Constructor
+    Interest(double principal, double rate, double time) {
+        this.principal = principal;
+        this.rate = rate;
+        this.time = time;
+    }
+
+    // Method to calculate Simple Interest
+    double calculateSimpleInterest() {
+        return (principal * rate * time) / 100;
+    }
+
+    // Method to calculate Compound Interest
+    double calculateCompoundInterest() {
+        return principal * (Math.pow((1 + rate / 100), time)) - principal;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Example values
+        double principal = 10000;
+        double rate = 5;   // 5% annual interest
+        double time = 3;   // 3 years
+
+        Interest interestObj = new Interest(principal, rate, time);
+
+        double simpleInterest = interestObj.calculateSimpleInterest();
+        double compoundInterest = interestObj.calculateCompoundInterest();
+        double difference = compoundInterest - simpleInterest;
+
+        System.out.println("Principal: " + principal);
+        System.out.println("Rate: " + rate + "%");
+        System.out.println("Time: " + time + " years");
+        System.out.println("Simple Interest: " + simpleInterest);
+        System.out.println("Compound Interest: " + compoundInterest);
+        System.out.println("Difference in returns: " + difference);
+    }
+}
