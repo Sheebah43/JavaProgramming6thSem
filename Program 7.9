@@ -1,0 +1,63 @@
+/*  Program 7.9: Develop a Java program to calculate the EMI (Equated Monthly Installment) of a loan using the principal amount, annual interest rate, and loan tenure. 
+Use exception handling to validate all user inputs and prevent invalid calculations. 
+*/
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class LoanEMICalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            // Accept principal
+            System.out.print("Enter Principal Amount: ");
+            double principal = sc.nextDouble();
+            if (principal <= 0) {
+                throw new IllegalArgumentException("Principal must be greater than zero.");
+            }
+
+            // Accept annual interest rate
+            System.out.print("Enter Annual Interest Rate (%): ");
+            double annualRate = sc.nextDouble();
+            if (annualRate < 0) {
+                throw new IllegalArgumentException("Interest rate cannot be negative.");
+            }
+
+            // Accept loan tenure in years
+            System.out.print("Enter Loan Tenure (in years): ");
+            int years = sc.nextInt();
+            if (years <= 0) {
+                throw new IllegalArgumentException("Loan tenure must be greater than zero.");
+            }
+
+            // Convert annual rate to monthly rate
+            double monthlyRate = annualRate / (12 * 100);
+            int months = years * 12;
+
+            // EMI formula: [P * r * (1+r)^n] / [(1+r)^n - 1]
+            double emi;
+            if (monthlyRate == 0) {
+                // No interest case
+                emi = principal / months;
+            } else {
+                emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) /
+                      (Math.pow(1 + monthlyRate, months) - 1);
+            }
+
+            // Display results
+            System.out.println("\n--- Loan EMI Calculation ---");
+            System.out.println("Principal Amount: " + principal);
+            System.out.println("Annual Interest Rate: " + annualRate + "%");
+            System.out.println("Loan Tenure: " + years + " years (" + months + " months)");
+            System.out.println("Monthly EMI: " + emi);
+
+        } catch (InputMismatchException e) {
+            System.out.println("Error: Invalid input! Please enter numeric values only.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            sc.close();
+            System.out.println("Program terminated safely.");
+        }
+    }
+}
