@@ -1,0 +1,71 @@
+/*  Program 7.3:  Create an interface Result containing methods to calculate total marks, percentage, and grade. 
+Accept marks obtained by a student in five subjects and display the total marks, percentage, and corresponding grade.  
+*/
+import java.util.Scanner;
+
+// Interface
+interface Result {
+    int calculateTotal(int[] marks);
+    double calculatePercentage(int total);
+    String calculateGrade(double percentage);
+}
+
+// Implementation class
+class StudentResult implements Result {
+    private final int SUBJECTS = 5;
+
+    @Override
+    public int calculateTotal(int[] marks) {
+        int total = 0;
+        for (int mark : marks) {
+            total += mark;
+        }
+        return total;
+    }
+
+    @Override
+    public double calculatePercentage(int total) {
+        return (double) total / (SUBJECTS * 100) * 100;
+    }
+
+    @Override
+    public String calculateGrade(double percentage) {
+        if (percentage >= 90) return "A+";
+        else if (percentage >= 80) return "A";
+        else if (percentage >= 70) return "B";
+        else if (percentage >= 60) return "C";
+        else if (percentage >= 50) return "D";
+        else return "F";
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] marks = new int[5];
+
+        // Accept marks
+        System.out.println("Enter marks for 5 subjects (out of 100):");
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Subject " + (i + 1) + ": ");
+            marks[i] = sc.nextInt();
+        }
+
+        // Create object
+        StudentResult result = new StudentResult();
+
+        // Calculate
+        int total = result.calculateTotal(marks);
+        double percentage = result.calculatePercentage(total);
+        String grade = result.calculateGrade(percentage);
+
+        // Display results
+        System.out.println("\n--- Student Result ---");
+        System.out.println("Total Marks: " + total + " / 500");
+        System.out.println("Percentage: " + percentage + "%");
+        System.out.println("Grade: " + grade);
+
+        sc.close();
+    }
+}
