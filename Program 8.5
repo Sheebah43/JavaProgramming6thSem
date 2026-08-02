@@ -1,0 +1,41 @@
+/*  Program 8.5: Write a Java program that prompts the user to enter a password and validates its length. 
+If the password contains fewer than eight characters, the program should throw an exception and display an appropriate error message. 
+Use try, throw, catch, and finally blocks to demonstrate proper exception handling and program flow. 
+*/
+import java.util.Scanner;
+
+class InvalidPasswordException extends Exception {
+    public InvalidPasswordException(String message) {
+        super(message);
+    }
+}
+
+public class PasswordValidationDemo {
+
+    // Method to validate password length
+    public static void validatePassword(String password) throws InvalidPasswordException {
+        if (password.length() < 8) {
+            throw new InvalidPasswordException("Invalid password: Must contain at least 8 characters.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter your password: ");
+            String password = sc.nextLine();
+
+            // Validate password
+            validatePassword(password);
+
+            System.out.println("Password accepted. Proceeding...");
+
+        } catch (InvalidPasswordException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            sc.close();
+            System.out.println("Program terminated gracefully.");
+        }
+    }
+}
