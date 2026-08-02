@@ -1,0 +1,65 @@
+/*  Program 7.4: Create an interface EmployeeSalary containing methods to calculate gross salary and net salary. 
+Accept basic pay, HRA, DA, and other allowances from the user and generate a complete salary statement.  
+*/
+import java.util.Scanner;
+
+// Interface
+interface EmployeeSalary {
+    double calculateGrossSalary(double basic, double hra, double da, double allowances);
+    double calculateNetSalary(double gross);
+}
+
+// Implementation class
+class Salary implements EmployeeSalary {
+
+    @Override
+    public double calculateGrossSalary(double basic, double hra, double da, double allowances) {
+        return basic + hra + da + allowances;
+    }
+
+    @Override
+    public double calculateNetSalary(double gross) {
+        // Example deductions: 10% PF + 5% Professional Tax
+        double pf = gross * 0.10;
+        double tax = gross * 0.05;
+        return gross - (pf + tax);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Accept user input
+        System.out.print("Enter Basic Pay: ");
+        double basic = sc.nextDouble();
+
+        System.out.print("Enter HRA: ");
+        double hra = sc.nextDouble();
+
+        System.out.print("Enter DA: ");
+        double da = sc.nextDouble();
+
+        System.out.print("Enter Other Allowances: ");
+        double allowances = sc.nextDouble();
+
+        // Create object
+        Salary salaryObj = new Salary();
+
+        // Calculate
+        double grossSalary = salaryObj.calculateGrossSalary(basic, hra, da, allowances);
+        double netSalary = salaryObj.calculateNetSalary(grossSalary);
+
+        // Display salary statement
+        System.out.println("\n--- Salary Statement ---");
+        System.out.println("Basic Pay: " + basic);
+        System.out.println("HRA: " + hra);
+        System.out.println("DA: " + da);
+        System.out.println("Other Allowances: " + allowances);
+        System.out.println("Gross Salary: " + grossSalary);
+        System.out.println("Net Salary (after deductions): " + netSalary);
+
+        sc.close();
+    }
+}
