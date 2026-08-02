@@ -1,0 +1,58 @@
+/*  Program 7.2: Create an interface InterestCalculator containing methods to calculate Simple Interest and Compound Interest. 
+Accept the principal amount, rate of interest, and time period from the user and display the calculated interest values.
+*/
+import java.util.Scanner;
+
+// Interface
+interface InterestCalculator {
+    double calculateSimpleInterest(double principal, double rate, double time);
+    double calculateCompoundInterest(double principal, double rate, double time);
+}
+
+// Implementation class
+class Interest implements InterestCalculator {
+
+    @Override
+    public double calculateSimpleInterest(double principal, double rate, double time) {
+        return (principal * rate * time) / 100;
+    }
+
+    @Override
+    public double calculateCompoundInterest(double principal, double rate, double time) {
+        return principal * (Math.pow((1 + rate / 100), time)) - principal;
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Accept user input
+        System.out.print("Enter Principal Amount: ");
+        double principal = sc.nextDouble();
+
+        System.out.print("Enter Rate of Interest (% per year): ");
+        double rate = sc.nextDouble();
+
+        System.out.print("Enter Time (in years): ");
+        double time = sc.nextDouble();
+
+        // Create object
+        Interest interestObj = new Interest();
+
+        // Calculate
+        double simpleInterest = interestObj.calculateSimpleInterest(principal, rate, time);
+        double compoundInterest = interestObj.calculateCompoundInterest(principal, rate, time);
+
+        // Display results
+        System.out.println("\n--- Interest Results ---");
+        System.out.println("Principal: " + principal);
+        System.out.println("Rate: " + rate + "%");
+        System.out.println("Time: " + time + " years");
+        System.out.println("Simple Interest: " + simpleInterest);
+        System.out.println("Compound Interest: " + compoundInterest);
+
+        sc.close();
+    }
+}
