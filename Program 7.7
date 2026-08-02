@@ -1,0 +1,85 @@
+/*  Program 7.7:  Create an interface ShoppingCart containing methods to calculate the subtotal, GST amount, discount amount, and final payable bill. 
+Accept item prices and quantities from the user and generate a detailed bill. 
+*/
+import java.util.Scanner;
+
+// Interface
+interface ShoppingCart {
+    double calculateSubtotal(double[] prices, int[] quantities);
+    double calculateGST(double subtotal);
+    double calculateDiscount(double subtotal);
+    double calculateFinalBill(double subtotal, double gst, double discount);
+}
+
+// Implementation class
+class Cart implements ShoppingCart {
+    private final double GST_RATE = 0.18;     // 18% GST
+    private final double DISCOUNT_RATE = 0.10; // 10% discount
+
+    @Override
+    public double calculateSubtotal(double[] prices, int[] quantities) {
+        double subtotal = 0;
+        for (int i = 0; i < prices.length; i++) {
+            subtotal += prices[i] * quantities[i];
+        }
+        return subtotal;
+    }
+
+    @Override
+    public double calculateGST(double subtotal) {
+        return subtotal * GST_RATE;
+    }
+
+    @Override
+    public double calculateDiscount(double subtotal) {
+        return subtotal * DISCOUNT_RATE;
+    }
+
+    @Override
+    public double calculateFinalBill(double subtotal, double gst, double discount) {
+        return subtotal + gst - discount;
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Accept number of items
+        System.out.print("Enter number of items: ");
+        int n = sc.nextInt();
+
+        double[] prices = new double[n];
+        int[] quantities = new int[n];
+
+        // Accept item details
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter price of item " + (i + 1) + ": ");
+            prices[i] = sc.nextDouble();
+            System.out.print("Enter quantity of item " + (i + 1) + ": ");
+            quantities[i] = sc.nextInt();
+        }
+
+        // Create object
+        Cart cart = new Cart();
+
+        // Calculate
+        double subtotal = cart.calculateSubtotal(prices, quantities);
+        double gst = cart.calculateGST(subtotal);
+        double discount = cart.calculateDiscount(subtotal);
+        double finalBill = cart.calculateFinalBill(subtotal, gst, discount);
+
+        // Display bill
+        System.out.println("\n--- Detailed Bill ---");
+        for (int i = 0; i < n; i++) {
+            System.out.println("Item " + (i + 1) + ": Price = " + prices[i] + ", Quantity = " + quantities[i] + ", Total = " + (prices[i] * quantities[i]));
+        }
+        System.out.println("Subtotal: " + subtotal);
+        System.out.println("GST (18%): " + gst);
+        System.out.println("Discount (10%): -" + discount);
+        System.out.println("Final Payable Amount: " + finalBill);
+
+        sc.close();
+    }
+}
