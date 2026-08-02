@@ -1,0 +1,25 @@
+/*  Program 9.3: Objective: Learn thread priorities.
+Task: Create HighPriority, MediumPriority and LowPriority threads. Assign MAX_PRIORITY, NORM_PRIORITY and MIN_PRIORITY, respectively. 
+Print each thread's name and priority five times. Compare execution order.
+*/
+public class ThreadPriorities{
+    public static class assignPriority extends Thread{
+        assignPriority(String name, int priority){
+            super(name);
+            setPriority(priority);
+        }
+        public void run(){
+            for(int i=0; i<5; i++){
+                System.out.println("Name:"+getName()+"\nPriority:"+getPriority());
+            }
+        }
+    }
+    public static void main (String [] args){
+        assignPriority highPriority = new assignPriority("HighPriority", Thread.MAX_PRIORITY);
+        assignPriority medPriority = new assignPriority("MedPriority", Thread.NORM_PRIORITY);
+        assignPriority lowPriority = new assignPriority("LowPriority", Thread.MIN_PRIORITY);
+        highPriority.start();
+        medPriority.start();
+        lowPriority.start();
+    }
+}
