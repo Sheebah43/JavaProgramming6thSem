@@ -1,0 +1,36 @@
+/*  Program 8.2: Write a Java program that creates an array of five integers and allows the user to enter an index to access an element. 
+If the entered index is outside the valid range of the array, the program should catch ArrayIndexOutOfBoundsException and display a meaningful message indicating that the index is invalid. 
+*/
+import java.util.InputMismatchException;
+import java.util.Scanner;
+public class IndexExceptionDemo {
+    public static void tryIndex(int[] array) throws IndexOutOfBoundsException, InputMismatchException{
+        System.out.println("Enter the index you wish to access. The input must be an integer and between 0 and 4");
+        Scanner sc = new Scanner(System.in);
+        int index = sc.nextInt();
+        if(index<0 || index>array.length){
+            throw new IndexOutOfBoundsException("The entered index must lie between 0 and 4");
+        }
+        else{
+            System.out.println(array[index]);
+        }
+    }
+    
+    
+    public static void main(String [] args){
+
+        try{
+        int[] arr = {10,20,30,40,50};
+        tryIndex(arr);
+    }
+    catch(IndexOutOfBoundsException e){
+        System.out.println(e.getMessage());
+    }
+    catch(InputMismatchException ex){
+        System.out.println("Enter an integer value input.");
+    }
+    }
+        
+
+    }
+
