@@ -29,8 +29,8 @@ Posting Java programs practiced in the lab at the University.
 <img width="317" height="647" alt="image" src="https://github.com/user-attachments/assets/1b79fa8c-a0ad-4ad4-9c41-87f9afed01df" />
 <h2>Date: 19<sup>th</sup> June, 2026</h2>
 <h3>Lab 7: Exception Handling</h3>
-<h2>Date: 23<sup>rd</sup> June, 2026</h2>
 <img width="830" height="854" alt="image" src="https://github.com/user-attachments/assets/a50d50b5-88e4-44a0-b1dc-ede9ef9a4295" /><br>
+<h2>Date: 23<sup>rd</sup> June, 2026</h2>
 <h3>Lab 8: Exception Handling</h3>
 <img width="841" height="567" alt="image" src="https://github.com/user-attachments/assets/72c8b714-0e55-4f6a-b572-150b41a93cf0" /><br>
 <h2>Date: 30<sup>th</sup> June, 2026</h2>
