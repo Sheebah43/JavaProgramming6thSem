@@ -2,46 +2,76 @@
 Using objects, perform the required arithmetic operation, handle division by zero, and maintain the history of the last five calculations.
 */
 
-import java.util.Scanner;
+import java.util.*;
 
-public class ArrayStats {
-    public static void main(String[] args) {
+public class CalculatorHistory {
+    private static LinkedList<String> history = new LinkedList<>();
+
+    public void selectOperation(double a, double b, char operator){
+        String result = "";
+        switch(operator){
+            case '+':
+                result = "The sum of " + a + " and " + b + " is: " + (a+b);
+                break;
+            case '-':
+                result = "The difference of " + a + " and " + b + " is: " + (a-b);
+                break;
+            case '*':
+                result = "The product of " + a + " and " + b + " is: " + (a*b);
+                break;
+            case '/':
+                try {
+                    double quotient = divideThrow(a,b);
+                    result = "The quotient of " + a + " and " + b + " is: " + quotient;
+                } catch(ArithmeticException e){
+                    result = e.getMessage();
+                }
+                break;
+            default:
+                result = "Enter valid character";
+        }
+        System.out.println(result);
+        addToHistory(result);
+    }
+
+    public static double divideThrow(double a, double b) throws ArithmeticException{
+        if(b==0){
+            throw new ArithmeticException("Division by zero not allowed!");
+        }
+        return a/b;
+    }
+
+    private static void addToHistory(String entry){
+        history.add(entry);
+        if(history.size() > 5){
+            history.removeFirst(); // keep only last 5
+        }
+    }
+
+    public static void showHistory(){
+        System.out.println("\n--- Last 5 Calculations ---");
+        for(String h : history){
+            System.out.println(h);
+        }
+    }
+
+    public static void main (String[] args){
         Scanner sc = new Scanner(System.in);
+        CalculatorHistory op = new CalculatorHistory();
 
-        System.out.print("Enter number of elements: ");
-        int n = sc.nextInt();
-
-        int[] arr = new int[n];
-
-        // Input elements
-        System.out.println("Enter " + n + " elements:");
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-
-        int sum = 0;
-        int max = arr[0];
-        int min = arr[0];
-
-        // Process array
-        for (int i = 0; i < n; i++) {
-            sum += arr[i];
-            if (arr[i] > max) {
-                max = arr[i];
+        while(true){
+            System.out.println("\nEnter number one, number two and operator (+,-,*,/). Type 'h' to view history or 'q' to quit:");
+            String input = sc.next();
+            if(input.equalsIgnoreCase("q")) break;
+            if(input.equalsIgnoreCase("h")){
+                showHistory();
+                continue;
             }
-            if (arr[i] < min) {
-                min = arr[i];
-            }
+            double a = Double.parseDouble(input);
+            double b = sc.nextDouble();
+            char operator = sc.next().charAt(0);
+            op.selectOperation(a, b, operator);
         }
-
-        double average = (double) sum / n;
-
-        // Output results
-        System.out.println("Sum = " + sum);
-        System.out.println("Average = " + average);
-        System.out.println("Maximum = " + max);
-        System.out.println("Minimum = " + min);
-
         sc.close();
     }
 }
