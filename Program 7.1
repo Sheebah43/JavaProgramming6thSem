@@ -1,0 +1,74 @@
+/*  Program 7.1: Create an interface Shape containing methods to calculate the area and perimeter of a geometric figure. 
+Implement the interface in classes such as Circle and Rectangle. 
+Accept the required dimensions from the user and display the calculated area and perimeter for each shape.  */
+import java.util.Scanner;
+
+// Interface
+interface Shape {
+    double getArea();
+    double getPerimeter();
+}
+
+// Circle class implementing Shape
+class Circle implements Shape {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+// Rectangle class implementing Shape
+class Rectangle implements Shape {
+    double length, width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public double getArea() {
+        return length * width;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 2 * (length + width);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Circle input
+        System.out.print("Enter radius of Circle: ");
+        double radius = sc.nextDouble();
+        Circle circle = new Circle(radius);
+        System.out.println("Circle Area: " + circle.getArea());
+        System.out.println("Circle Perimeter: " + circle.getPerimeter());
+
+        // Rectangle input
+        System.out.print("\nEnter length of Rectangle: ");
+        double length = sc.nextDouble();
+        System.out.print("Enter width of Rectangle: ");
+        double width = sc.nextDouble();
+        Rectangle rectangle = new Rectangle(length, width);
+        System.out.println("Rectangle Area: " + rectangle.getArea());
+        System.out.println("Rectangle Perimeter: " + rectangle.getPerimeter());
+
+        sc.close();
+    }
+}
