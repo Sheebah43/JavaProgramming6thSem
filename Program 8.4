@@ -1,0 +1,43 @@
+/*  Program 8.4: Write a Java program that accepts the age of a user and checks whether the user is at least 18 years old. Create a custom exception named InvalidAgeException that is thrown when the entered age is less than 18. 
+Catch the exception in the main program and display an appropriate message explaining why the input is invalid. 
+*/
+import java.util.Scanner;
+
+// Custom exception class
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class AgeCheckDemo {
+
+    // Method to validate age
+    public static void validateAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Invalid age: You must be at least 18 years old.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter your age: ");
+            int age = sc.nextInt();
+
+            // Validate age
+            validateAge(age);
+
+            System.out.println("Access granted. You are eligible!");
+
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: Please enter a valid numeric age.");
+        } finally {
+            sc.close();
+            System.out.println("Program terminated gracefully.");
+        }
+    }
+}
