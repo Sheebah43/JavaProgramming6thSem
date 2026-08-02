@@ -1,0 +1,55 @@
+/*  Program 5.10: Create a class “Shape” with a method “calculateArea()” that calculates and returns the area of the shape. 
+Create two subclasses “Rectangle” and “Triangle” that extend “Shape” and implement the “calculateArea()” method.
+*/
+class Shape {
+    double calculateArea() {
+        System.out.println("Area");
+        return 0;
+    }
+}
+
+class Rectangle extends Shape {
+    double length;
+    double width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    double calculateArea() {
+        return length * width;
+    }
+}
+
+class Triangle extends Shape {
+    double base;
+    double height;
+
+    Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    @Override
+    double calculateArea() {
+        return 0.5 * base * height;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Object of Shape
+        Shape s = new Shape();
+        s.calculateArea();  // prints "Area calculation not defined..."
+
+        // Object of Rectangle
+        Rectangle r = new Rectangle(10, 5);
+        System.out.println("Rectangle Area: " + r.calculateArea());
+
+        // Object of Triangle
+        Triangle t = new Triangle(8, 6);
+        System.out.println("Triangle Area: " + t.calculateArea());
+    }
+}
