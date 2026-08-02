@@ -1,0 +1,67 @@
+/* Program 4.7: Write a Java program to create a class BankAccount with account number, balance, and transaction limit as data members. 
+Using objects, perform deposit and withdrawal operations, apply penalties for insufficient balance, and calculate monthly interest on the remaining balance.
+*/
+import java.util.Scanner;
+
+public class BankAccount {
+    int accountNumber;
+    double balance, transLimit, interestRate;
+
+    BankAccount(int accountNumber, double balance, double transLimit, double interestRate) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.transLimit = transLimit;
+        this.interestRate = interestRate;
+    }
+
+    // Deposit method
+    void deposit(double depositAmount) {
+        if (depositAmount <= transLimit) {
+            balance += depositAmount;
+            double monInt = (interestRate * balance) / 12;
+            balance += monInt;
+            System.out.println("New balance = " + balance + " and interest = " + monInt);
+        } else {
+            System.out.println("Transaction Limit = " + transLimit);
+        }
+    }
+
+    // Withdraw method
+    void withdrawal(double withdrawn) {
+        if (withdrawn <= transLimit) {
+            if (withdrawn <= balance) {
+                balance -= withdrawn;
+                double monInt = (interestRate * balance) / 12;
+                balance += monInt;
+                System.out.println("New balance = " + balance + " and interest = " + monInt);
+            } else {
+                System.out.println("Insufficient balance");
+            }
+        } else {
+            System.out.println("Transaction Limit = " + transLimit);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your account number:");
+        int accountNumber = sc.nextInt();
+
+        BankAccount accDetails = new BankAccount(accountNumber, 10000, 5500, 0.05);
+
+        System.out.print("Select 1 for deposit and 2 for withdrawal: ");
+        int choice = sc.nextInt();
+
+        if (choice == 1) {
+            System.out.println("Enter the amount to be deposited:");
+            double depositAmount = sc.nextDouble();
+            accDetails.deposit(depositAmount); // updates object balance
+        } else if (choice == 2) {
+            System.out.println("Enter the amount to be withdrawn:");
+            double withdrawn = sc.nextDouble();
+            accDetails.withdrawal(withdrawn); // updates object balance
+        } else {
+            System.out.println("Enter a valid input!");
+        }
+    }
+}
