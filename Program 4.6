@@ -1,0 +1,78 @@
+/*  Program 4.6: Write a Java program to create a class Employee with basic salary, overtime hours, and leave deductions as data members. 
+Using objects, calculate HRA, DA, tax deductions, bonuses, gross salary, and net salary according to salary slabs.
+*/
+class Employee {
+    private double basicSalary;
+    private int overtimeHours;
+    private double leaveDeductions;
+
+    // Constructor
+    public Employee(double basicSalary, int overtimeHours, double leaveDeductions) {
+        this.basicSalary = basicSalary;
+        this.overtimeHours = overtimeHours;
+        this.leaveDeductions = leaveDeductions;
+    }
+
+    // Calculate HRA (20% of basic)
+    public double calculateHRA() {
+        return 0.20 * basicSalary;
+    }
+
+    // Calculate DA (10% of basic)
+    public double calculateDA() {
+        return 0.10 * basicSalary;
+    }
+
+    // Calculate Bonus based on slabs
+    public double calculateBonus() {
+        if (basicSalary < 20000) return 2000;
+        else if (basicSalary <= 50000) return 5000;
+        else return 10000;
+    }
+
+    // Calculate overtime pay (₹200 per hour)
+    public double calculateOvertimePay() {
+        return overtimeHours * 200;
+    }
+
+    // Calculate Gross Salary
+    public double calculateGrossSalary() {
+        return basicSalary + calculateHRA() + calculateDA() + 
+               calculateBonus() + calculateOvertimePay();
+    }
+
+    // Calculate Tax based on slabs
+    public double calculateTax(double grossSalary) {
+        if (grossSalary < 30000) return grossSalary * 0.05;
+        else if (grossSalary <= 60000) return grossSalary * 0.10;
+        else return grossSalary * 0.20;
+    }
+
+    // Calculate Net Salary
+    public double calculateNetSalary() {
+        double gross = calculateGrossSalary();
+        double tax = calculateTax(gross);
+        return gross - tax - leaveDeductions;
+    }
+
+    // Display Salary Details
+    public void displaySalaryDetails() {
+        System.out.println("Basic Salary: ₹" + basicSalary);
+        System.out.println("HRA: ₹" + calculateHRA());
+        System.out.println("DA: ₹" + calculateDA());
+        System.out.println("Bonus: ₹" + calculateBonus());
+        System.out.println("Overtime Pay: ₹" + calculateOvertimePay());
+        System.out.println("Gross Salary: ₹" + calculateGrossSalary());
+        System.out.println("Tax Deduction: ₹" + calculateTax(calculateGrossSalary()));
+        System.out.println("Leave Deductions: ₹" + leaveDeductions);
+        System.out.println("Net Salary: ₹" + calculateNetSalary());
+    }
+}
+
+// Driver class
+public class Main {
+    public static void main(String[] args) {
+        Employee emp1 = new Employee(40000, 10, 2000);
+        emp1.displaySalaryDetails();
+    }
+}
