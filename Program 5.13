@@ -1,0 +1,63 @@
+/*2.	Create a class “BankAccount” with a method “deposit()” that adds money to the account. 
+Create two subclasses “SavingsAccount” and “CheckingAccount” that extend “BankAccount” 
+and implement the “deposit()” method to add interest to the account balance for savings account and display a message for checking account.
+*/
+class BankAccount {
+    double balance;
+
+    BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    // Deposit method (to be overridden)
+    void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount + ", New Balance: " + balance);
+    }
+}
+
+class SavingsAccount extends BankAccount {
+    double interestRate;
+
+    SavingsAccount(double balance, double interestRate) {
+        super(balance);
+        this.interestRate = interestRate;
+    }
+
+    // Override deposit to add interest
+    @Override
+    void deposit(double amount) {
+        balance += amount;
+        double interest = balance * interestRate;
+        balance += interest;
+        System.out.println("Deposited: " + amount + ", Interest Added: " + interest + ", New Balance: " + balance);
+    }
+}
+
+// Subclass CheckingAccount
+class CheckingAccount extends BankAccount {
+
+    CheckingAccount(double balance) {
+        super(balance);
+    }
+
+    // Override deposit to just display a message
+    @Override
+    void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount + " into Checking Account. New Balance: " + balance);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount b1 = new BankAccount(5000);
+        b1.deposit(1000);
+
+        SavingsAccount s1 = new SavingsAccount(10000, 0.05); // 5% interest
+        s1.deposit(2000);
+
+        CheckingAccount c1 = new CheckingAccount(8000);
+        c1.deposit(1500);
+    }
+}
