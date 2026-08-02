@@ -1,0 +1,42 @@
+/*  Program 9.4: Assignment 4: Using sleep()
+Objective: Understand thread suspension.
+Task: Create two threads. One prints numbers 1–5 with 500 ms delay. Another prints A–E with 700ms delay. Observe interleaving.
+*/
+//Create two threads. One prints numbers 1–5 with 500 ms delay. Another prints A–E with 700ms delay. Observe interleaving.
+public class SleepThread {
+    public class numThread extends Thread{
+        @Override
+        public void run(){
+            for (int i = 1; i<=5; i++){
+                System.out.print("\nNumber Thread->"+i+" \n");
+                try{
+                    Thread.sleep(500);
+                }
+                catch(InterruptedException e){
+                    System.out.println("---Thread was interrupted.---\n");
+                }
+            }
+        }
+    }
+    public class charThread extends Thread{
+        @Override
+        public void run(){
+            for (char i = 'A'; i<='E'; i++){
+                System.out.print("\nCharater Thread->"+i+" \n");
+                try{
+                    Thread.sleep(700);
+                }
+                catch(InterruptedException e){
+                    System.out.println("---Thread was interrupted.---\n");
+                }
+            }
+        }
+    }   
+    public static void main (String [] args){
+        SleepThread th = new SleepThread();
+        numThread nTh = th.new numThread();
+        charThread lTh = th.new charThread();
+        nTh.start();
+        lTh.start();
+    } 
+}
